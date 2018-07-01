@@ -318,6 +318,12 @@ message.delete();
 message.reply("Good job on the win! Check <#424336735179374612> to see it!")
 break;
 
+case "!scriminfo":
+let scroleID = "462784184965005313";
+let membersWithRole = message.guild.roles.get(scroleID).members;
+message.membersWithRole.send("Test");
+break;
+           
 case "!owranks":
   message.delete();
     message.channel.send({embed: {
