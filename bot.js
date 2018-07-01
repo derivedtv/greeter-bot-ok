@@ -320,8 +320,10 @@ break;
 
 case "!scriminfo":
 let scroleID = "462784184965005313";
-let membersWithRole = message.guild.roles.get(scroleID).members;
-message.membersWithRole.send("Test");
+let allusers = message.guild.roles.get(scroleID).members.map(u=>u.id);
+for (i in allusers) {
+client.users.get(allusers[i].send("test")
+)}
 break;
            
 case "!owranks":
