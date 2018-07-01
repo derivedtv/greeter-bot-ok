@@ -319,11 +319,48 @@ message.reply("Good job on the win! Check <#424336735179374612> to see it!")
 break;
 
 case "!scriminfo":
-let scroleID = "462784184965005313";
-let allusers = message.guild.roles.get(scroleID).members.map(u=>u.id);
-for (i in allusers) {
-client.users.get(allusers[i].send("test")
-)}
+let screc = message.mentions.users.first();
+let scinfo = args.slice(0).join(' ');
+
+if(!screc)
+return;
+ 
+if(!scinfo)
+return;
+
+message.mentions.users.first().send({embed: {
+  color: 0xff040b,
+  author: {
+    name: client.user.username,
+    icon_url: 'https://d1u5p3l4wpay3k.cloudfront.net/fortnite_gamepedia/thumb/e/e5/BattleRoyaleSkin92.png/256px-BattleRoyaleSkin92.png?version=aca2636b45874ed0a80303153fecd9d7'
+  },
+  thumbnail: {
+    url: 'https://i0.wp.com/fortniteskins.net/wp-content/uploads/2018/05/black-shield-image.png?fit=512%2C512&ssl=1'
+  },
+  title: "**Fortnite Scrims**",
+  description: "Read up on the info for the upcoming Fortnite scrims!",
+  fields: [{
+      name: "__**Team 1:**__",
+      value: "Mxrs_, KWA aidan, Deviation, Watermalons",
+      inline: true
+    },
+    {
+      name: "__**Team 2:**__",
+      value: "KWA Froxin, KWA OB, KWA Elevenity, KWA Void",
+      inline: true
+    },
+    {
+      name: "__**Time:**__",
+      value: "The scrims will begin @11:00 PM EST."
+    },
+  ],
+  timestamp: new Date(),
+  footer: {
+    text: "Anybody on the roster can be replaced if necessary.",
+    icon_url: client.user.avatarURL,
+  }
+}
+});
 break;
            
 case "!owranks":
