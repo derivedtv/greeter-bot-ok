@@ -93,6 +93,13 @@ client.channels.get("409362377126182922").send({embed: {
   member.addRole(joinrole)
 });
 
+Music.start(client, {
+  youtubeKey: "AIzaSyCNWoy8GsBCwu1A0TpC6SCE9xIQDE50kgI",
+  prefix: "!",
+  leaveAlt: ["leave", "fuckoffcunt"],
+  helpCmd: "help"
+});
+
 client.on('message', function(message) {
   var args = message.content.split(" ");
   var cmd = args[0];
