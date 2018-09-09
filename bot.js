@@ -138,6 +138,7 @@ client.on('message', function(message) {
         }
         break;
 
+           
 case "!update":
 message.delete();
 
@@ -219,6 +220,30 @@ message.channel.send({embed: {
 });
 break;
 
+case "!countdown":
+message.channel.send("5");
+
+setTimeout(function(){ 
+  message.channel.send("4");
+}), 1000
+
+setTimeout(function(){ 
+  message.channel.send("3");
+}), 1000
+
+setTimeout(function(){ 
+  message.channel.send("2");
+}), 1000
+
+setTimeout(function(){ 
+  message.channel.send("1");
+}), 1000
+
+setTimeout(function(){ 
+  message.channel.send("Go");
+}), 1000
+break;
+           
 case "!eval":
 if(!message.member.roles.some(r=>["Administrator"].includes(r.name)) )
 return message.reply("You don't have the required role to use this!");
