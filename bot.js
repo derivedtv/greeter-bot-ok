@@ -153,22 +153,22 @@ message.channel.send({embed: {
   },
   fields: [{
       name: "__**Version**__",
-      value: "2.2.1",
+      value: "2.3",
       inline: true,
     },
     {
       name: "__**Release Date**__",
-      value: "5/26/18",
+      value: "12/17/18",
       inline: true,
     },
     {
       name: "__**Recent Update:**__",
-      value: "Overall command cleanup as well as new staff commands."
+      value: "Overall command cleanup as well as new staff commands, and a Christmas update"
     }
   ],
   timestamp: new Date(),
   footer: {
-    icon_url: "https://cdn.discordapp.com/avatars/160140367554019329/86941cff5d6b12ac93b0941dea2056cb.png?size=2048",
+    icon_url: "https://cdn.discordapp.com/avatars/411277964723093504/2538c95bd13aebfd10ebf0351889ba18.png?size=2048",
     text: "© ok hand#6327"
   }
 }
@@ -186,12 +186,12 @@ message.channel.send({embed: {
   },
   fields: [{
       name: "__**Version**__",
-      value: "2.2.1",
+      value: "2.3",
       inline: true,
     },
     {
       name: "__**Release Date**__",
-      value: "5/26/18",
+      value: "12/17/18",
       inline: true,
     },
     {
