@@ -225,23 +225,23 @@ message.channel.send("5");
 
 setTimeout(function(){ 
   message.channel.send("4");
-}), 1000
+}), 3000
 
 setTimeout(function(){ 
   message.channel.send("3");
-}), 1000
+}), 3000
 
 setTimeout(function(){ 
   message.channel.send("2");
-}), 1000
+}), 3000
 
 setTimeout(function(){ 
   message.channel.send("1");
-}), 1000
+}), 3000
 
 setTimeout(function(){ 
   message.channel.send("Go");
-}), 1000
+}), 3000
 break;
            
 case "!eval":
