@@ -17,7 +17,7 @@
         "ffmpeg": "0.0.4",
         "ffmpeg-binaries": "^3.2.2-3",
         "ffmpeg.js": "^3.1.9001",
-        "node": "^8.11.1",
+        "node.js": "^8.11.1",
         "node-fetch": "^2.0.0",
         "npm": "^5.7.1",
         "opusscript": "0.0.6",
