@@ -442,6 +442,12 @@ case "!owranks":
 });
 break;
 
+case "!christmas":
+message.delete();
+message.guild.member(message.author).addRole("524393146239680548");
+message.channel.send("The user " + message.author + " was given the role ``Christmas`` Merry Christmas!");
+break;
+           
 case "!fortnite":
 message.delete();
 message.guild.member(message.author).addRole("409198125828538378");
