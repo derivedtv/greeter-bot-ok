@@ -281,6 +281,8 @@ weather.find({search: args.join(" "), degreeType: 'F'}, function(err, result) {
 break;
         
 case "!apply":
+let appid = Math.floor(Math.random() * 10100)
+
 client.channels.get("429930040403296266").send({embed: {
   color: 0xff040b,
   author: {
@@ -294,7 +296,7 @@ client.channels.get("429930040403296266").send({embed: {
     },
     {
       name: "Application ID",
-      value: `${Math.floor(Math.random() * 10100)}`,
+      value: `${appid}`,
       inline: true,
     }
   ],
@@ -305,7 +307,7 @@ client.channels.get("429930040403296266").send({embed: {
 }
 });
 
-message.author.send(`Hello ${message.author}, your form will be sent shortly.`);
+message.author.send(`Hello ${message.author}, your form will be sent shortly.\nYour application ID is ${appid}. Send this to a staff member if you feel your application has not yet been checked over.`);
 setTimeout(function(){ 
 message.author.send({embed: {
   color: 0xff040b,
@@ -923,6 +925,8 @@ else {
 break;
 
 case "!kick":
+let kickid = Math.floor(Math.random() * 10100)
+
 if(!message.member.roles.some(r=>["Administrator", "Moderator", ":ok_hand:", "Officer", "Admin", "Head Raid leader"].includes(r.name)) )
       return message.reply("Sorry, you don't have permissions to use this!");
 
@@ -963,7 +967,7 @@ if(!message.member.roles.some(r=>["Administrator", "Moderator", ":ok_hand:", "Of
           },
           {
             name: "Kick ID",
-            value: `${Math.floor(Math.random() * 10100)}`,
+            value: `${kickid}`,
             inline: true,
           }
         ],
@@ -978,6 +982,7 @@ break;
 
 case "!ban":
 let bmember = message.mentions.members.first();
+let banid = Math.floor(Math.random() * 10100)
 
   if(!message.member.roles.some(r=>["Administrator", ":ok_hand:", "Officer", "Admin", "Head Raid leader"].includes(r.name)) )
     return message.reply("Sorry, you don't have permissions to use this!");
@@ -1016,7 +1021,7 @@ let bmember = message.mentions.members.first();
         },
         {
           name: "Ban ID",
-          value: `${Math.floor(Math.random() * 10100)}`,
+          value: `${banid}`,
           inline: true,
         }
       ],
@@ -1027,10 +1032,12 @@ let bmember = message.mentions.members.first();
     }
   });
   message.channel.send(`***✅ ${bmember.user.tag} was banned!***`);
+  message.mentions.users.first().send(`You were warned in :ok_hand:, ${reason}.\nYour warning ID is ${warnid}. Please contact the staff to appeal your warning using this ID.`);
 break;
 
 case "!warn":
 let members = message.mentions.members.first();
+let warnid = Math.floor(Math.random() * 10100)
 
   if(!message.member.roles.some(r=>["Administrator", ":ok_hand:", "Officer", "Admin", "Head Raid leader"].includes(r.name)) )
     return message.reply("Sorry, you don't have permissions to use this!");
@@ -1066,7 +1073,7 @@ let members = message.mentions.members.first();
       },
       {
         name: "Warning ID",
-        value: `${Math.floor(Math.random() * 10100)}`,
+        value: `${warnid}`,
         inline: true,
       }
     ],
@@ -1076,7 +1083,7 @@ let members = message.mentions.members.first();
     }
   }
 });
-  message.mentions.users.first().send(`You were warned in :ok_hand:, ${reason}`);
+  message.mentions.users.first().send(`You were warned in :ok_hand:, ${reason}.\nYour warning ID is ${warnid}. Please contact the staff to appeal your warning using this ID.`);
 break;
 
        }
