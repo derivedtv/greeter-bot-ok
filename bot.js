@@ -934,6 +934,11 @@ if(!message.member.roles.some(r=>["Administrator", "Moderator", ":ok_hand:", "Of
             name: "Reason",
             value: `${kreason}`,
             inline: true,
+          },
+          {
+            name: "Kick ID",
+            value: `${Math.floor(Math.random() * 10100)}`,
+            inline: true,
           }
         ],
         timestamp: new Date(),
@@ -981,6 +986,11 @@ let bmember = message.mentions.members.first();
         {
           name: "Reason",
           value: `${breason}`,
+          inline: true,
+        },
+        {
+          name: "Ban ID",
+          value: `${Math.floor(Math.random() * 10100)}`,
           inline: true,
         }
       ],
