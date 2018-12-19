@@ -1030,7 +1030,7 @@ let members = message.mentions.members.first();
       },
       {
         name: "Warning ID",
-        value: `Math.floor(Math.random() * 10100)`,
+        value: `"" + Math.floor(Math.random() * 10100) + ""`,
         inline: true,
       }
     ],
