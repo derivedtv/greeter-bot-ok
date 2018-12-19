@@ -1027,6 +1027,11 @@ let members = message.mentions.members.first();
         name: "Reason",
         value: `${reason}`,
         inline: true,
+      },
+      {
+        name: "Warning ID",
+        value: `Math.floor(Math.random() * 10100)`,
+        inline: true,
       }
     ],
     timestamp: new Date(),
