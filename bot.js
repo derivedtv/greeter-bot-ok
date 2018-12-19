@@ -917,7 +917,7 @@ if(!message.member.roles.some(r=>["Administrator", "Moderator", ":ok_hand:", "Of
       client.channels.get("429930040403296266").send({embed: {
         color: 0xff040b,
         author: {
-          name: `Ban | ${member.user.tag} `,
+          name: `Kick | ${member.user.tag} `,
           icon_url: member.user.avatarURL
         },
         fields: [{
