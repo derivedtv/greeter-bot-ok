@@ -281,7 +281,32 @@ weather.find({search: args.join(" "), degreeType: 'F'}, function(err, result) {
 break;
         
 case "!apply":
+client.channels.get("429930040403296266").send({embed: {
+  color: 0xff040b,
+  author: {
+    name: `Application | ${message.author.tag} `,
+    icon_url: message.author.avatarURL
+  },
+  fields: [{
+      name: "User",
+      value: `${message.author}`,
+      inline: true,
+    },
+    {
+      name: "Application ID",
+      value: `${Math.floor(Math.random() * 10100)}`,
+      inline: true,
+    }
+  ],
+  timestamp: new Date(),
+  footer: {
+    text: `ID: ${message.author.id}`,
+  }
+}
+});
+
 message.author.send(`Hello ${message.author}, your form will be sent shortly.`);
+setTimeout(function(){ 
 message.author.send({embed: {
   color: 0xff040b,
   author: {
@@ -299,6 +324,7 @@ message.author.send({embed: {
   timestamp: new Date(),
   }}
 );
+}), 3000
 break;
            
 case "!announce":
