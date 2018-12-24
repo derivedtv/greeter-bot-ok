@@ -115,17 +115,17 @@ message.channel.send({embed: {
   },
   fields: [{
       name: "__**Version**__",
-      value: "2.3",
+      value: "2.3.3",
       inline: true,
     },
     {
       name: "__**Release Date**__",
-      value: "12/17/18",
+      value: "12/23/18",
       inline: true,
     },
     {
       name: "__**Recent Update:**__",
-      value: "Overall command cleanup as well as new staff commands, and a Christmas update"
+      value: "Remade staff roles, remade staff command permissions, reworked staff commands, cleaned some commands."
     }
   ],
   timestamp: new Date(),
@@ -148,12 +148,12 @@ message.channel.send({embed: {
   },
   fields: [{
       name: "__**Version**__",
-      value: "2.3",
+      value: "2.3.3",
       inline: true,
     },
     {
       name: "__**Release Date**__",
-      value: "12/17/18",
+      value: "12/23/18",
       inline: true,
     },
     {
