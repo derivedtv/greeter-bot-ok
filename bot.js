@@ -538,11 +538,7 @@ if(!messagenumber)
 return message.reply("**Please include a number of messages to delete! (1-99)**\nExample: ``!purge 1``\n__**Make sure to add 1 more than the original amount.**__")
 
 message.delete();
-
-let messagecount = parseInt(messagenumber);
-  message.channel.fetchMessages({limit: messagecount}).then(messages => message.channel.bulkDelete(messages));
-           
-  client.channels.get("429930040403296266").send({embed: {
+client.channels.get("429930040403296266").send({embed: {
     color: 0xff040b,
     author: {
       name: `Purge | ${message.author.tag} `,
@@ -570,6 +566,9 @@ let messagecount = parseInt(messagenumber);
     }
   }
 });
+           
+let messagecount = parseInt(messagenumber);
+  message.channel.fetchMessages({limit: messagecount}).then(messages => message.channel.bulkDelete(messages));
 break;
 
 case "!vote":
