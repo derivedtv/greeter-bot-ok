@@ -529,8 +529,9 @@ break;
 
 case "!purge":
 let messagenumber = args.slice(0).join(' ');
+let purgeid = Math.floor(Math.random() * 10100)
 
-if(!message.member.roles.some(r=>["Administrator", ":ok_hand:", "Officer", "Admin", "Head Raid leader"].includes(r.name)) )
+if(!message.member.roles.some(r=>["Administrator", ":ok_hand:", "Officer", "Admin", "Head Raid leader", "Security"].includes(r.name)) )
 return message.reply ("You do not have the required permissions to use this!")
 
 if(!messagenumber)
@@ -540,6 +541,35 @@ message.delete();
 
 let messagecount = parseInt(messagenumber);
   message.channel.fetchMessages({limit: messagecount}).then(messages => message.channel.bulkDelete(messages));
+           
+  client.channels.get("429930040403296266").send({embed: {
+    color: 0xff040b,
+    author: {
+      name: `Purge | ${message.author.tag} `,
+      icon_url: message.author
+    },
+    fields: [{
+        name: "Purge Amount",
+        value: `${messagenumber}`,
+        inline: true,
+      },
+      {
+        name: "Moderator",
+        value: `${message.author}`,
+        inline: true,
+      },
+      {
+        name: "Purge ID",
+        value: `${purgeid}`,
+        inline: true,
+      }
+    ],
+    timestamp: new Date(),
+    footer: {
+      text: `ID: ${message.author.id}`,
+    }
+  }
+});
 break;
 
 case "!vote":
@@ -1001,7 +1031,7 @@ case "!warn":
 let members = message.mentions.members.first();
 let warnid = Math.floor(Math.random() * 10100)
 
-  if(!message.member.roles.some(r=>["Administrator", ":ok_hand:", "Officer", "Admin", "Head Raid leader"].includes(r.name)) )
+  if(!message.member.roles.some(r=>["Administrator", ":ok_hand:", "Officer", "Admin", "Head Raid leader", "Security"].includes(r.name)) )
     return message.reply("Sorry, you don't have permissions to use this!");
   
   if(!members)
