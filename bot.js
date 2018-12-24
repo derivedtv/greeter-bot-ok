@@ -100,44 +100,6 @@ client.on('message', function(message) {
   args = args.splice(1);
 
        switch(cmd) {
-
-        case "!mute":
-        var ehh = message.guild.roles.find("name", "Muted");
-        var pp = message.mentions.members.first();
-        let mreason = args.slice(1).join(" ");
-        if (message.member.hasPermission("KICK_MEMBERS")) {
-            if (pp.roles.has(ehh.id)) {
-                message.channel.send("That person is already muted!");
-            } else {
-                pp.addRole(ehh.id);
-                pp.send("**You have been muted in " + message.guild + " for:**  `` " + mreason + "``");
-                message.channel.send(message.guild.member(pp) + " **has been successfully muted!**");
-            }
-        } else {
-            message.channel.send("You do not have the permission to use that command!");
-            
-            if (pp == null) {
-              message.channel.send("You need to provide someone to kick!");
-              }
-        }
-        break;
-
-    case "!unmute":
-        var eh = message.guild.roles.find("name", "Muted");
-        var ppp = message.mentions.members.first();
-        if (message.member.hasPermission("KICK_MEMBERS")) {
-            if (ppp.roles.has(eh.id)) {
-                ppp.removeRole(eh.id);
-                ppp.send("**You have been unmuted in " + message.guild + "**");
-                message.channel.send(message.guild.member(ppp) + " **has been successfully unmuted!**");
-            } else {
-                message.channel.send("That person is not muted!");
-            }
-        } else {
-            message.channel.send("You do not have the permission to do that!")
-        }
-        break;
-
            
 case "!update":
 message.delete();
@@ -1084,6 +1046,96 @@ let warnid = Math.floor(Math.random() * 10100)
   }
 });
   message.mentions.users.first().send(`You were warned in :ok_hand:, ${reason}.\nYour warning ID is ${warnid}. Please contact the staff to appeal your warning using this ID.`);
+break;
+
+case "!mute":
+let mmembers = message.mentions.members.first();
+let muteid = Math.floor(Math.random() * 10100)
+
+  if(!message.member.roles.some(r=>["Administrator", ":ok_hand:", "Officer", "Admin", "Head Raid leader", "Security"].includes(r.name)) )
+    return message.reply("Sorry, you don't have permissions to use this!");
+  
+  if(!mmembers)
+    return message.reply("Please mention a valid member of this server!");
+
+  let mreason = args.slice(1).join(' ');
+  if(!mreason)
+    return message.reply("Please indicate a reason for the mute!");
+  
+  mmembers.addRole("411288455201423361")
+  message.channel.send(`***✅ ${mmembers.user.tag} has been muted.***`);
+  client.channels.get("429930040403296266").send({embed: {
+    color: 0xff040b,
+    author: {
+      name: `Mute | ${mmembers.user.tag} `,
+      icon_url: mmembers.user.avatarURL
+    },
+    fields: [{
+        name: "User",
+        value: `${mmembers.user}`,
+        inline: true,
+      },
+      {
+        name: "Moderator",
+        value: `${message.author}`,
+        inline: true,
+      },
+      {
+        name: "Reason",
+        value: `${mreason}`,
+        inline: true,
+      },
+      {
+        name: "Mute ID",
+        value: `${muteid}`,
+        inline: true,
+      }
+    ],
+    timestamp: new Date(),
+    footer: {
+      text: `ID: ${mmembers.user.id}`,
+    }
+  }
+});
+  message.mentions.users.first().send(`You were muted in :ok_hand:, ${mreason}.\nYour mute ID is ${muteid}. Please contact the staff to appeal your mute using this ID.`);
+break;
+
+case "!unmute":
+let mmmembers = message.mentions.members.first();
+
+  if(!message.member.roles.some(r=>["Administrator", ":ok_hand:", "Officer", "Admin", "Head Raid leader", "Security"].includes(r.name)) )
+    return message.reply("Sorry, you don't have permissions to use this!");
+  
+  if(!mmmembers)
+    return message.reply("Please mention a valid member of this server!");
+  
+  mmmembers.removeRole("411288455201423361");
+
+  message.channel.send(`***✅ ${mmmembers.user.tag} has been unmuted.***`);
+  client.channels.get("429930040403296266").send({embed: {
+    color: 0xff040b,
+    author: {
+      name: `Unmute | ${mmmembers.user.tag} `,
+      icon_url: mmmembers.user.avatarURL
+    },
+    fields: [{
+        name: "User",
+        value: `${mmmembers.user}`,
+        inline: true,
+      },
+      {
+        name: "Moderator",
+        value: `${message.author}`,
+        inline: true,
+      }
+    ],
+    timestamp: new Date(),
+    footer: {
+      text: `ID: ${mmmembers.user.id}`,
+    }
+  }
+});
+  message.mentions.users.first().send(`You were unmuted in :ok_hand:`);
 break;
 
        }
