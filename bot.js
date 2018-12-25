@@ -1030,7 +1030,7 @@ case "!warn":
 let members = message.mentions.members.first();
 let warnid = Math.floor(Math.random() * 10100)
 
-  if(!message.member.roles.some(r=>["Administrator", ":ok_hand:", "Officer", "Admin", "Head Raid leader", "Security"].includes(r.name)) )
+  if(!message.member.roles.some(r=>["Administrator", ":ok_hand:", "Officer", "Admin", "Head Raid leader", "Security", "Moderator"].includes(r.name)) )
     return message.reply("Sorry, you don't have permissions to use this!");
   
   if(!members)
@@ -1081,7 +1081,7 @@ case "!mute":
 let mmembers = message.mentions.members.first();
 let muteid = Math.floor(Math.random() * 10100)
 
-  if(!message.member.roles.some(r=>["Administrator", ":ok_hand:", "Officer", "Admin", "Head Raid leader", "Security"].includes(r.name)) )
+  if(!message.member.roles.some(r=>["Administrator", ":ok_hand:", "Officer", "Admin", "Head Raid leader", "Security", "Moderator"].includes(r.name)) )
     return message.reply("Sorry, you don't have permissions to use this!");
   
   if(!mmembers)
@@ -1132,7 +1132,7 @@ break;
 case "!unmute":
 let mmmembers = message.mentions.members.first();
 
-  if(!message.member.roles.some(r=>["Administrator", ":ok_hand:", "Officer", "Admin", "Head Raid leader", "Security"].includes(r.name)) )
+  if(!message.member.roles.some(r=>["Administrator", ":ok_hand:", "Officer", "Admin", "Head Raid leader", "Security", "Moderator"].includes(r.name)) )
     return message.reply("Sorry, you don't have permissions to use this!");
   
   if(!mmmembers)
