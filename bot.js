@@ -8,18 +8,18 @@ const snekfetch = require("snekfetch");
 const setupCMD = "!createrolemessage"
 const weather = require('weather-js');
 
-const music = new Music(client, {
-  prefix: "!",
-  maxQueueSize: "100",
-  disableLoop: true,
-  leaveHelp: "Bad help text.",
-  leaveAlt: ["lve","leev","un1c0rns"],
-  helpCmd: 'mhelp',
-  leaveCmd: 'begone',
-  ownerOverMember: true,
-  botOwner: '160140367554019329',
-  youtubeKey: 'AIzaSyCNWoy8GsBCwu1A0TpC6SCE9xIQDE50kgI'
-});
+//const music = new Music(client, {
+ // prefix: "!",
+ // maxQueueSize: "100",
+ // disableLoop: true,
+ // leaveHelp: "Bad help text.",
+ // leaveAlt: ["lve","leev","un1c0rns"],
+ // helpCmd: 'mhelp',
+ // leaveCmd: 'begone',
+//  ownerOverMember: true,
+ // botOwner: '160140367554019329',
+ // youtubeKey: 'AIzaSyCNWoy8GsBCwu1A0TpC6SCE9xIQDE50kgI'
+//});
 
 let initialMessage = `**React to the messages below to receive the associated role. If you would like to remove the role, simply remove your reaction!**`;
 const roles = ["Fortnite", "Rocket League", "Overwatch", "RotMG", "GTAV", "Minecraft"];
