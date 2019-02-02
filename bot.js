@@ -8,9 +8,22 @@ const snekfetch = require("snekfetch");
 const setupCMD = "!createrolemessage"
 const weather = require('weather-js');
 
+const music = new Music(client, {
+  prefix: "!",
+  maxQueueSize: "100",
+  disableLoop: true,
+  leaveHelp: "Bad help text.",
+  leaveAlt: ["lve","leev","un1c0rns"],
+  helpCmd: 'mhelp',
+  leaveCmd: 'begone',
+  ownerOverMember: true,
+  botOwner: '160140367554019329',
+  youtubeKey: 'AIzaSyCNWoy8GsBCwu1A0TpC6SCE9xIQDE50kgI'
+});
+
 let initialMessage = `**React to the messages below to receive the associated role. If you would like to remove the role, simply remove your reaction!**`;
-const roles = ["Fortnite", "Rocket League", "Overwatch", "RotMG", "GTAV"];
-const reactions = ["444914030709178378", "444914415133917184", "444914414433337355", "444914412395036685", "444914415100231690"];
+const roles = ["Fortnite", "Rocket League", "Overwatch", "RotMG", "GTAV", "Minecraft"];
+const reactions = ["444914030709178378", "444914415133917184", "444914414433337355", "444914412395036685", "444914415100231690", "541381125881331722"];
 if (roles.length !== reactions.length) throw "Roles list and reactions list are not the same length!";
 
 function generateMessages(){
@@ -83,7 +96,7 @@ client.channels.get("409362377126182922").send({embed: {
       }
     ],
     footer: {
-      text: "© ok hand#6327",
+      text: "© ok hand #1903",
     }
   }
   });
@@ -107,7 +120,7 @@ message.delete();
 if(!message.member.roles.some(r=>["Administrator", ":ok_hand:", "Officer", "Admin", "Head Raid leader"].includes(r.name)) )
 message.delete();
 
-message.channel.send({embed: {
+client.channels.get("430525498968506368").send({embed: {
   color: 0xff040b,
   author: {
     name: "Bot Update",
@@ -115,23 +128,23 @@ message.channel.send({embed: {
   },
   fields: [{
       name: "__**Version**__",
-      value: "2.3.3",
+      value: "2.4",
       inline: true,
     },
     {
       name: "__**Release Date**__",
-      value: "12/23/18",
+      value: "2/2/19",
       inline: true,
     },
     {
       name: "__**Recent Update:**__",
-      value: "Remade staff roles, remade staff command permissions, reworked staff commands, cleaned some commands."
+      value: "Cleaned some commands, added !say command for everyone, added new staff commands, changed permissions and cleaned channel permissions for staff."
     }
   ],
   timestamp: new Date(),
   footer: {
-    icon_url: "https://cdn.discordapp.com/avatars/411277964723093504/2538c95bd13aebfd10ebf0351889ba18.png?size=2048",
-    text: "© ok hand#6327"
+    icon_url: "https://cdn.discordapp.com/avatars/160140367554019329/11aeeb672d6350f17109df860ba849fc.png?size=2048",
+    text: "© ok hand#1903"
   }
 }
 });
@@ -148,12 +161,12 @@ message.channel.send({embed: {
   },
   fields: [{
       name: "__**Version**__",
-      value: "2.3.3",
+      value: "2.4",
       inline: true,
     },
     {
       name: "__**Release Date**__",
-      value: "12/23/18",
+      value: "2/2/19",
       inline: true,
     },
     {
@@ -175,35 +188,11 @@ message.channel.send({embed: {
   ],
   timestamp: new Date(),
   footer: {
-    icon_url: "https://cdn.discordapp.com/avatars/160140367554019329/86941cff5d6b12ac93b0941dea2056cb.png?size=2048",
-    text: "© ok hand#6327"
+    icon_url: "https://cdn.discordapp.com/avatars/160140367554019329/11aeeb672d6350f17109df860ba849fc.png?size=2048",
+    text: "© ok hand#1903"
   }
 }
 });
-break;
-
-case "!countdown":
-message.channel.send("5");
-
-setTimeout(function(){ 
-  message.channel.send("4");
-}), 3000
-
-setTimeout(function(){ 
-  message.channel.send("3");
-}), 3000
-
-setTimeout(function(){ 
-  message.channel.send("2");
-}), 3000
-
-setTimeout(function(){ 
-  message.channel.send("1");
-}), 3000
-
-setTimeout(function(){ 
-  message.channel.send("Go");
-}), 3000
 break;
            
 case "!eval":
@@ -333,142 +322,87 @@ message.delete();
 message.reply("Good job on the win! Check <#424336735179374612> to see it!")
 break;
 
-case "!scriminfo":
-let screc = message.mentions.users.first();
-let scinfo = args.slice(0).join(' ');
-
-if(!screc)
-return;
- 
-if(!scinfo)
-return;
-
-message.mentions.users.first().send({embed: {
-  color: 0xff040b,
-  author: {
-    name: client.user.username,
-    icon_url: 'https://d1u5p3l4wpay3k.cloudfront.net/fortnite_gamepedia/thumb/e/e5/BattleRoyaleSkin92.png/256px-BattleRoyaleSkin92.png?version=aca2636b45874ed0a80303153fecd9d7'
-  },
-  thumbnail: {
-    url: 'https://i0.wp.com/fortniteskins.net/wp-content/uploads/2018/05/black-shield-image.png?fit=512%2C512&ssl=1'
-  },
-  title: "**Fortnite Scrims**",
-  description: "Read up on the info for the upcoming Fortnite scrims!",
-  fields: [{
-      name: "__**Team 1:**__",
-      value: "Mxrs_, KWA aidan, Deviation, Watermalons",
-      inline: true
-    },
-    {
-      name: "__**Team 2:**__",
-      value: "KWA Froxin, KWA OB, KWA Elevenity, KWA Void",
-      inline: true
-    },
-    {
-      name: "__**Time:**__",
-      value: "The scrims will begin @11:00 PM EST."
-    },
-  ],
-  timestamp: new Date(),
-  footer: {
-    text: "Anybody on the roster can be replaced if necessary.",
-    icon_url: client.user.avatarURL,
-  }
-}
-});
-break;
-           
-case "!owranks":
-  message.delete();
-    message.channel.send({embed: {
-    color: 0xff040b,
-    author: {
-      name: client.user.username,
-      icon_url: 'https://d1u5p3l4wpay3k.cloudfront.net/overwatch_gamepedia/thumb/7/73/Badge_8_Top_500.png/32px-Badge_8_Top_500.png?version=8fa9c593427e57990da33f762710042f'
-    },
-    thumbnail: {
-      url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Overwatch_circle_logo.svg/600px-Overwatch_circle_logo.svg.png'
-    },
-    title: "**Overwatch Ranks**",
-    description: "These are all of the current Overwatch Commands.",
-    fields: [{
-        name: "__**Bronze**__",
-        value: "Bronze is acheived in the SR range 1-1499."
-      },
-      {
-        name: "__**Silver**__",
-        value: "Silver is acheived in the SR range 1500-1999."
-      },
-      {
-        name: "__**Gold**__",
-        value: "Gold is acheived in the SR range 2000-2499."
-      },
-      {
-        name: "__**Platinum**__",
-        value: "Platinum is acheived in the SR range 2500-2999."
-      },
-      {
-        name: "__**Diamond**__",
-        value: "Diamond is acheived in the SR range 3000-3499."
-      },
-      {
-        name: "__**Master**__",
-        value: "Master is acheived in the SR range 3500-3999."
-      },
-      {
-        name: "__**Grandmaster**__",
-        value: "Grandmaster is acheived in any SR at 4000+."
-      },
-      {
-        name: "__**Top 500**__",
-        value: "To get Top 500, you must be among the __**top 500**__ players in your region. "
-      }
-    ],
-    timestamp: new Date(),
-    footer: {
-      icon_url: client.user.avatarURL,
-    }
-  }
-});
-break;
-
-case "!christmas":
-message.delete();
-message.guild.member(message.author).addRole("524393146239680548");
-message.channel.send("The user " + message.author + " was given the role ``Christmas`` Merry Christmas!");
-break;
+//case "!christmas":
+//message.delete();
+//message.guild.member(message.author).addRole("524393146239680548");
+//message.channel.send("The user " + message.author + " was given the role ``Christmas`` Merry Christmas!");
+//break;
            
 case "!fortnite":
+
+if(message.member.roles.some(r=>["Fortnite"].includes(r.name)) )
+return message.reply ("You already have the Fortnite role!")
+
 message.delete();
 message.guild.member(message.author).addRole("409198125828538378");
 message.channel.send("The user " + message.author + " was given the role ``Fortnite``");
 break;
 
+case "!minecraft":
+
+if(message.member.roles.some(r=>["Minecraft"].includes(r.name)) )
+return message.reply ("You already have the Minecraft role!")
+
+message.delete();
+message.guild.member(message.author).addRole("541380629053571082");
+message.channel.send("The user " + message.author + " was given the role ``Minecraft``");
+break;
+
 case "!rotmg":
+
+if(message.member.roles.some(r=>["RotMG"].includes(r.name)) )
+return message.reply ("You already have the RotMG role!")
+
 message.delete();
 message.guild.member(message.author).addRole("409198191796289546");
 message.channel.send("The user " + message.author + " was given the role ``RotMG``");
 break;
 
 case "!overwatch":
+
+if(message.member.roles.some(r=>["Overwatch"].includes(r.name)) )
+return message.reply ("You already have the Overwatch role!")
+
 message.delete();
 message.guild.member(message.author).addRole("409198136347721739");
 message.channel.send("The user " + message.author + " was given the role ``Overwatch``");
 break;
 
 case "!gtav":
+
+if(message.member.roles.some(r=>["GTAV"].includes(r.name)) )
+return message.reply ("You already have the Grand Theft Auto V role!")
+
 message.delete();
 message.guild.member(message.author).addRole("409198078894014465");
 message.channel.send("The user " + message.author + " was given the role ``GTAV``");
 break;
 
 case "!rleague":
+
+if(message.member.roles.some(r=>["Rocket League"].includes(r.name)) )
+return message.reply ("You already have the Rocket League role!")
+
 message.delete();
 message.guild.member(message.author).addRole("409198133327953930");
 message.channel.send("The user " + message.author + " was given the role ``Rocket League``");
 break;
 
+case "!rminecraft":
+
+if(!message.member.roles.some(r=>["Minecraft"].includes(r.name)) )
+return message.reply ("You don't have the Minecraft role!")
+
+message.delete();
+message.guild.member(message.author).removeRole("541380629053571082");
+message.channel.send("The user " + message.author + " got ``Minecraft`` removed.");
+break;
+
 case "!rfortnite":
+
+if(!message.member.roles.some(r=>["Fortnite"].includes(r.name)) )
+return message.reply ("You don't have the Fortnite role!")
+
 message.delete();
 message.guild.member(message.author).removeRole("409198125828538378");
 message.channel.send("The user " + message.author + " got ``Fortnite`` removed.");
@@ -504,24 +438,40 @@ message.channel.send(foundppl);
 break;
 
 case "!rrotmg":
+
+if(!message.member.roles.some(r=>["RotMG"].includes(r.name)) )
+return message.reply ("You don't have the RotMG role!")
+
 message.delete();
 message.guild.member(message.author).removeRole("409198191796289546");
 message.channel.send("The user " + message.author + " got ``RotMG`` removed.");
 break;
 
 case "!roverwatch":
+
+if(!message.member.roles.some(r=>["Overwatch"].includes(r.name)) )
+return message.reply ("You don't have the Overwatch role!")
+
 message.delete();
 message.guild.member(message.author).removeRole("409198136347721739");
 message.channel.send("The user " + message.author + " got ``Overwatch`` removed.");
 break;
 
 case "!rgtav":
+
+if(!message.member.roles.some(r=>["GTAV"].includes(r.name)) )
+return message.reply ("You don't have the Grand Theft Auto V role!")
+
 message.delete();
 message.guild.member(message.author).removeRole("409198078894014465");
 message.channel.send("The user " + message.author + " got ``GTAV`` removed.");
 break;
 
 case "!rrleague":
+
+if(!message.member.roles.some(r=>["Rocket League"].includes(r.name)) )
+return message.reply ("You don't have the Rocket League role!")
+
 message.delete();
 message.guild.member(message.author).removeRole("409198133327953930");
 message.channel.send("The user " + message.author + " got ``Rocket League`` removed.");
@@ -585,7 +535,7 @@ message.channel.send({embed: {
     icon_url: client.user.avatarURL
   },
   title: pollresponse,
-  description: "Vote 👍 or 👎 for the below questionarre.",
+  description: "Vote 👍 or 👎 for the above questionarre.",
   timestamp: new Date(),
 }
 })
@@ -626,6 +576,7 @@ break;
 
 case "!userinfo":
 message.delete();
+
 let uiembed = new Discord.RichEmbed()
 .setAuthor(message.author.username)
 .setDescription("This is " + message.author.username + "'s info!")
@@ -671,179 +622,11 @@ client.channels.get("424791795923156993").send({embed: {
   })
 break;
 
-  case "!rotmgchars":
-  message.delete();
-    message.channel.send({embed: {
-    color: 0xff040b,
-    author: {
-      name: client.user.username,
-      icon_url: client.user.avatarURL
-    },
-    thumbnail: {
-      url: 'https://steamuserimages-a.akamaihd.net/ugc/615025248066186198/CCF7A2CA7AAC3180249A4C8E8346C0DA68A4D839/'
-    },
-    title: "**Realm Characters**",
-    description: "These are all of the current Realm of the Mad God characters.",
-    fields: [{
-        name: "__**Rogue**__ : Uses a medium ranged dagger. Special ability is cloaking.",
-        value: "\u200b"
-      },
-      {
-        name: "__**Archer**__ : Uses a long ranged bow. Special ability is shooting debuffs.",
-        value: "\u200b"
-      },
-      {
-        name: "__**Wizard**__ : Uses a long ranged staff. Special ability is burst of damage within a range.",
-        value: "\u200b"
-      },
-      {
-        name: "__**Priest**__ : Uses a long ranged wand. Special ability is AoE healing.",
-        value: "\u200b"
-      },
-      {
-        name: "__**Warrior**__ : Uses a short ranged sword. Special ability is berserk mode.",
-        value: "\u200b"
-      },
-      {
-        name: "__**Knight**__ : Uses a short ranged sword. Special ability is shield bash.",
-        value: "\u200b"
-      },
-      {
-        name: "__**Paladin**__ : Uses a short ranged sword. Special ability is AoE buff.",
-        value: "\u200b"
-      },
-      {
-        name: "__**Assassin**__ : Uses a medium ranged dagger. Special ability is throwing poisons that damage over time.",
-        value: "\u200b"
-      },
-      {
-        name: "__**Necromancer**__ : Uses a long ranged staff. Special ability is lifesteal.",
-        value: "\u200b"
-      },
-      {
-        name: "__**Huntress**__ : Uses a long ranged bow. Special ability is placing damaging traps.",
-        value: "\u200b"
-      },
-      {
-        name: "__**Mystic**__ : Uses a long ranged staff. Special ability is stasising enemies.",
-        value: "\u200b"
-      },
-      {
-        name: "__**Trickster**__ : Uses a medium ranged dagger. Special ability is sending out decoys.",
-        value: "\u200b"
-      },
-      {
-        name: "__**Sorcerer**__ : Uses a long ranged wand. Special ability is damage dealt across enemies.",
-        value: "\u200b"
-      },
-      {
-        name: "__**Ninja**__ : Uses a medium ranged katana. Special ability is shooting damaging shuriken.",
-        value: "\u200b"
-      }
-    ],
-    timestamp: new Date(),
-    footer: {
-      icon_url: client.user.avatarURL,
-    }
-  }
-});
-  break;
-
 case "!ping":
 message.delete();
-message.reply("Pong!")
-break;
-
-  case "!commands":
-  message.delete();
-    message.channel.send({embed: {
-    color: 0xff040b,
-    author: {
-    },
-    thumbnail: {
-      url: "http://simpleicon.com/wp-content/uploads/gear-2.png"
-    },
-    title: "__**Commands (Page 1)**__",
-    fields: [{
-        name: "__**!ping**__",
-        value: "This command pongs the user, which is a way to test bot status."
-      },
-      {
-        name: "__**!hello**__",
-        value: "This command replies Hey there!. Another way to test bot status."
-      },
-      {
-        name: "__**!commands**__",
-        value: "This command displays all available commands."
-      },
-      {
-        name: "__**!avatar**__",
-        value: "This command mentions you with a link to your profile picture. You can also mention other users to see their avatar."
-      },
-      {
-        name: "__**!suggest**__",
-        value: "This command will send me your suggestions for the bot."
-      },
-      {
-        name: "__**!roll**__",
-        value: "This command will roll a random number for you."
-      },
-      {
-        name: "__**!userinfo**__",
-        value: "This command will display your Discord account information."
-      },
-      {
-        name: "__**!love**__",
-        value: "This command will send love to a mentioned user."
-      }
-    ],
-    footer: {
-      text: "To see the other commands, use `!commands2`."
-    }
-  }
-});
-break;
-
-case "!commands2":
-message.delete();
-message.channel.send({embed: {
-color: 0xff040b,
-author: {
-},
-thumbnail: {
-  url: "http://simpleicon.com/wp-content/uploads/gear-2.png"
-},
-title: "__**Commands (Page 2)**__",
-fields: [{
-  name: "__**!owranks**__",
-  value: "Provides a detailed list of all current Overwatch competitive ranks and their SR ranges."
-},
-{
-  name: "__**!youtube**__",
-  value: "When used, it displays a search with whatever aregument came after !youtube."
-},
-{
-  name: "__**!okinvite**__",
-  value: "Displays an invite for Ok Hand."
-},
-{
-  name: "__**!rotmgchars**__",
-  value: "Displays a list of all current RotMG characters with weapons and abilities."
-},
-{
-  name: "__**!info**__",
-  value: "This command will display information about the bot."
-},
-{
-  name: "__**Role Commands**__",
-  value: "All role commands are in <#325861081631293442>."
-}
-],
-footer: {
-  text: "To see the other commands, use `!commands3`."
-}
-}
-});
+let pmess = message.reply("Pong!")
+message.channel.send(pmess)
+pmess.edit(`Pong! Latency is ${m.createdTimestamp - message.createdTimestamp}ms. API Latency is ${Math.round(client.ping)}ms`);
 break;
 
 case "!youtube":
@@ -1127,6 +910,90 @@ let muteid = Math.floor(Math.random() * 10100)
   }
 });
   message.mentions.users.first().send(`You were muted in :ok_hand:, ${mreason}.\nYour mute ID is ${muteid}. Please contact the staff to appeal your mute using this ID.`);
+break;
+
+case "!say":
+let saidmessage = args.slice(0).join("");
+
+if(!saidmessage)
+return message.reply("You forgot to include something after `!say`.")
+
+if(saidmessage.includes("nigger, faggot, nigga, n igga, n igger, ni gger, gay, gey, fag, fagg, faggo t"))
+return message.channel.send(`***✅ ${message.author.tag} has been warned.***`)
+return message.author.send(`You were warned in :ok_hand:, abusing !say command. Further abuse of this command will result in a ban.`)
+return client.channels.get("429930040403296266").send({embed: {
+  color: 0xff040b,
+  author: {
+    name: `Warn | ${message.author.tag} `,
+    icon_url: message.author.avatarURL
+  },
+  fields: [{
+      name: "User",
+      value: `${message.author}`,
+      inline: true,
+    },
+    {
+      name: "Reason",
+      value: `Abusing !say command. If this is the user's second offense be sure to ban them.`,
+      inline: true,
+    }
+  ],
+  timestamp: new Date(),
+  footer: {
+    text: `ID: ${message.author.id}`,
+  }
+}
+});
+
+message.channel.send(`>${saidmessage}`)
+break;
+
+case "!warnmute":
+let wmid = Math.floor(Math.random() * 10100)
+let wmmembers = message.mentions.users.first();
+let wmreason = args.slice(0).join(" ");
+
+  if(!message.member.roles.some(r=>["Administrator", ":ok_hand:", "Officer", "Admin", "Head Raid leader", "Security", "Moderator"].includes(r.name)) )
+    return message.reply("Sorry, you don't have permissions to use this!");
+
+  if(!wmmembers)
+    return message.reply("Please mention a valid member of this server!");
+ 
+  if(!wmreason)
+    return message.reply("Please include a reason for the warn/mute!")
+
+    wmmembers.addRole("411288455201423361");
+
+    message.channel.send(`***✅ ${wmmembers.user.tag} has been warned and muted.***`);
+    client.channels.get("429930040403296266").send({embed: {
+      color: 0xff040b,
+      author: {
+        name: `Warn/Mute | ${wmmembers.user.tag} `,
+        icon_url: wmmembers.user.avatarURL
+      },
+      fields: [{
+          name: "User",
+          value: `${wmmembers.user}`,
+          inline: true,
+        },
+        {
+          name: "Moderator",
+          value: `${message.author}`,
+          inline: true,
+        },
+        {
+          name: "Reason",
+          value: `${wmreason}`,
+          inline: true,
+        }
+      ],
+      timestamp: new Date(),
+      footer: {
+        text: `ID: ${wmmembers.user.id}`,
+      }
+    }
+  });
+    message.mentions.users.first().send(`You were warned and muted in :ok_hand:, ${wmreason}`);
 break;
 
 case "!unmute":
