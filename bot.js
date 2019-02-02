@@ -8,7 +8,7 @@ const snekfetch = require("snekfetch");
 const setupCMD = "!createrolemessage"
 const weather = require('weather-js');
 
-const music = new Music(client, {
+Music.start(client, {
   prefix: "!",
   maxQueueSize: "100",
   disableLoop: true,
@@ -138,7 +138,7 @@ client.channels.get("430525498968506368").send({embed: {
     },
     {
       name: "__**Recent Update:**__",
-      value: "Cleaned some commands, added !say command for everyone, added new staff commands, changed permissions and cleaned channel permissions for staff."
+      value: "Music commands brought back after months of technical difficulty! Cleaned some commands, added !say command for everyone, added new staff commands, changed permissions and cleaned channel permissions for staff."
     }
   ],
   timestamp: new Date(),
@@ -624,9 +624,7 @@ break;
 
 case "!ping":
 message.delete();
-let pmess = message.reply("Pong!")
-message.channel.send(pmess)
-pmess.edit(`Pong! Latency is ${m.createdTimestamp - message.createdTimestamp}ms. API Latency is ${Math.round(client.ping)}ms`);
+message.channel.send(`Pong! Latency is ${message.createdTimestamp - message.createdTimestamp}ms. API Latency is ${Math.round(client.ping)}ms`);
 break;
 
 case "!youtube":
@@ -913,45 +911,24 @@ let muteid = Math.floor(Math.random() * 10100)
 break;
 
 case "!say":
+message.delete();
+
 let saidmessage = args.slice(0).join("");
 
 if(!saidmessage)
 return message.reply("You forgot to include something after `!say`.")
 
-if(saidmessage.includes("nigger, faggot, nigga, n igga, n igger, ni gger, gay, gey, fag, fagg, faggo t"))
-return message.channel.send(`***✅ ${message.author.tag} has been warned.***`)
-return message.author.send(`You were warned in :ok_hand:, abusing !say command. Further abuse of this command will result in a ban.`)
-return client.channels.get("429930040403296266").send({embed: {
-  color: 0xff040b,
-  author: {
-    name: `Warn | ${message.author.tag} `,
-    icon_url: message.author.avatarURL
-  },
-  fields: [{
-      name: "User",
-      value: `${message.author}`,
-      inline: true,
-    },
-    {
-      name: "Reason",
-      value: `Abusing !say command. If this is the user's second offense be sure to ban them.`,
-      inline: true,
-    }
-  ],
-  timestamp: new Date(),
-  footer: {
-    text: `ID: ${message.author.id}`,
-  }
-}
-});
+if(saidmessage.includes("nigger", "faggot", "nigga", "n igga", "n igger", "ni gger", "gay", "gey", "fag", "fagg", "faggo t"))
+return message.reply("Using that language will result in a ban if used further");
 
 message.channel.send(`>${saidmessage}`)
+
 break;
 
 case "!warnmute":
 let wmid = Math.floor(Math.random() * 10100)
-let wmmembers = message.mentions.users.first();
-let wmreason = args.slice(0).join(" ");
+let wmmembers = message.mentions.members.first();
+let wmreason = args.slice(1).join(" ");
 
   if(!message.member.roles.some(r=>["Administrator", ":ok_hand:", "Officer", "Admin", "Head Raid leader", "Security", "Moderator"].includes(r.name)) )
     return message.reply("Sorry, you don't have permissions to use this!");
@@ -962,11 +939,12 @@ let wmreason = args.slice(0).join(" ");
   if(!wmreason)
     return message.reply("Please include a reason for the warn/mute!")
 
-    wmmembers.addRole("411288455201423361");
+wmmembers.addRole("411288455201423361");
 
-    message.channel.send(`***✅ ${wmmembers.user.tag} has been warned and muted.***`);
-    client.channels.get("429930040403296266").send({embed: {
-      color: 0xff040b,
+message.channel.send(`***✅ ${wmmembers.user.tag} has been warned and muted.***`);
+    
+client.channels.get("429930040403296266").send({embed: {
+  color: 0xff040b,
       author: {
         name: `Warn/Mute | ${wmmembers.user.tag} `,
         icon_url: wmmembers.user.avatarURL
@@ -993,6 +971,7 @@ let wmreason = args.slice(0).join(" ");
       }
     }
   });
+
     message.mentions.users.first().send(`You were warned and muted in :ok_hand:, ${wmreason}`);
 break;
 
@@ -1038,4 +1017,4 @@ break;
     
 });
 
-client.login(process.env.BOT_TOKEN)
+client.login("NDExMjc3OTY0NzIzMDkzNTA0.DzeuoQ.4sKjKlDnQyu6n6z040b6qUWC0z8")
