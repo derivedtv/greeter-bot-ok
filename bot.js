@@ -913,7 +913,7 @@ break;
 case "!say":
 message.delete();
 
-let saidmessage = args.slice(0).join("");
+let saidmessage = args.slice(0).join(" ");
 
 if(!saidmessage)
 return message.reply("You forgot to include something after `!say`.")
