@@ -921,25 +921,13 @@ return message.reply("You forgot to include something after `!say`.")
 if(saidmessage.includes("nigger", "faggot", "nigga", "n igga", "n igger", "ni gger", "gay", "gey", "fag", "fagg", "faggo t"))
 return message.reply("Using that language will result in a ban if used further");
 
-message.channel.send({embed: {
-  color: 0xff040b,
-  author: {
-    name: `${saidmessage}`,
-    icon_url: message.author.avatarURL
-  },
-  fields: [{
-      name: "__**Author**__",
-      value: `${message.author}`,
-      inline: true,
-    },
-  ],
-  timestamp: new Date(),
-  footer: {
-    icon_url: `${message.author}`,
-    text: "© ok hand#1903"
-  }
-}
-});
+const sayembed = new Discord.RichEmbed()
+      .setDescription(`**${saidmessage}**`)
+      .setAuthor(`${message.author.tag}`)
+      .setThumbnail(`${message.author.avatarURL}`)
+      .setColor(0x00AE86) 
+
+      message.channel.sendEmbed(sayembed)
 break;
 
 case "!warnmute":
