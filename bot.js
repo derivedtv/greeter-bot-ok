@@ -921,7 +921,7 @@ return message.reply("You forgot to include something after `!say`.")
 if(saidmessage.includes("nigger", "faggot", "nigga", "n igga", "n igger", "ni gger", "gay", "gey", "fag", "fagg", "faggo t"))
 return message.reply("Using that language will result in a ban if used further");
 
-message.channel.send(`>${saidmessage}`)
+message.reply(`>${saidmessage}`)
 
 break;
 
