@@ -480,43 +480,7 @@ break;
 case "!purge":
 let messagenumber = args.slice(0).join(' ');
 let purgeid = Math.floor(Math.random() * 10100)
-
-if(!message.member.roles.some(r=>["Administrator", ":ok_hand:", "Officer", "Admin", "Head Raid leader", "Security"].includes(r.name)) )
-return message.reply ("You do not have the required permissions to use this!")
-
-if(!messagenumber)
-return message.reply("**Please include a number of messages to delete! (1-99)**\nExample: ``!purge 1``\n__**Make sure to add 1 more than the original amount.**__")
-
-message.delete();
-client.channels.get("429930040403296266").send({embed: {
-    color: 0xff040b,
-    author: {
-      name: `Purge | ${message.author.tag} `,
-      icon_url: message.author
-    },
-    fields: [{
-        name: "Purge Amount",
-        value: `${messagenumber}`,
-        inline: true,
-      },
-      {
-        name: "Moderator",
-        value: `${message.author}`,
-        inline: true,
-      },
-      {
-        name: "Purge ID",
-        value: `${purgeid}`,
-        inline: true,
-      }
-    ],
-    timestamp: new Date(),
-    footer: {
-      text: `ID: ${message.author.id}`,
-    }
-  }
-});
-           
+   
 let messagecount = parseInt(messagenumber);
   message.channel.fetchMessages({limit: messagecount}).then(messages => message.channel.bulkDelete(messages));
 break;
@@ -1022,4 +986,4 @@ break;
     
 });
 
-client.login(process.env.BOT_TOKEN)
+client.login("MTYwMTQwMzY3NTU0MDE5MzI5.D0TOFA.G0Zw_PtDQNoF79Xo6ocgWp3Ryw4")
